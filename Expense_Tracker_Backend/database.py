@@ -1,6 +1,9 @@
+import os
 from pymongo import MongoClient  # type: ignore
 
-client = MongoClient("mongodb://localhost:27017")
+MONGODB_URL = os.getenv("MONGODB_URL", "mongodb://localhost:27017")
+
+client = MongoClient(MONGODB_URL)
 
 db = client["expense-tracker"]
 

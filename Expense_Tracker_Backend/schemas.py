@@ -1,4 +1,4 @@
-from datetime import   datetime 
+from datetime import datetime
 from pydantic import BaseModel
 
 
@@ -14,7 +14,7 @@ class TransactionsCreate(BaseModel):
     description : str
 
 class TransactionsResponse(BaseModel):
-    id : int
+    id : str
     is_income : bool # expense or income
     category : str
     amount : float

@@ -56,7 +56,7 @@ function LoanDebt() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto relative z-10 p-6 md:p-10">
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 animate-slide-up">
+        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 animate-slide-up">
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">Loans & Debts</h1>
             <p className="text-slate-400 text-sm mt-1">Track principal outstanding, interests, and EMIs payoff journey.</p>
@@ -65,6 +65,15 @@ function LoanDebt() {
             + Add Loan Account
           </button>
         </header>
+
+        {/* Coming Soon Alert Banner */}
+        <div className="bg-amber-500/10 border border-amber-500/20 text-amber-300 px-4 py-3 rounded-xl mb-8 flex items-center justify-between text-sm font-medium animate-slide-down">
+          <div className="flex items-center gap-2">
+            <span>🚀</span>
+            <span><strong>Coming Soon:</strong> EMI payoff calculator & loan management are coming soon. Below is a preview of the feature.</span>
+          </div>
+          <span className="text-xs bg-amber-500/20 text-amber-200 px-2.5 py-1 rounded-full font-semibold shrink-0">Preview Mode</span>
+        </div>
 
         {/* Overview Row */}
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 animate-slide-up" style={{ animationDelay: '100ms' }}>

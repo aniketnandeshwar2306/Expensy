@@ -69,7 +69,7 @@ function Analytics() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto relative z-10 p-6 md:p-10">
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 animate-slide-up">
+        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 animate-slide-up">
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">Analytics</h1>
             <p className="text-slate-400 text-sm mt-1">Deep insights into cashflow, breakdown, and patterns.</p>
@@ -80,6 +80,15 @@ function Analytics() {
             <button className="px-4 py-2 hover:text-white transition-colors">This Year</button>
           </div>
         </header>
+
+        {/* Coming Soon Alert Banner */}
+        <div className="bg-amber-500/10 border border-amber-500/20 text-amber-300 px-4 py-3 rounded-xl mb-8 flex items-center justify-between text-sm font-medium animate-slide-down">
+          <div className="flex items-center gap-2">
+            <span>🚀</span>
+            <span><strong>Coming Soon:</strong> Advanced Analytics & custom reports are coming soon. Below is a preview of the analytics dashboard.</span>
+          </div>
+          <span className="text-xs bg-amber-500/20 text-amber-200 px-2.5 py-1 rounded-full font-semibold shrink-0">Preview Mode</span>
+        </div>
 
         {/* Analytics charts grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

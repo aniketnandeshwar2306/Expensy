@@ -18,13 +18,9 @@ function Auth() {
   }
 
   const handleSignUp = () => {
-    resetForm()
-    setStatusMessage('')
     setIsSignUp(true)
   }
   const handleSignIn = () => {
-    resetForm()
-    setStatusMessage('')
     setIsSignUp(false)
   }
 

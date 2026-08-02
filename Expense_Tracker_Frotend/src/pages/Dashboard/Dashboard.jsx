@@ -47,6 +47,9 @@ function Dashboard() {
       if (res.ok) {
         const data = await res.json()
         setTransactions(prev => [data, ...prev])
+        setAmount("")
+        setDescription("")
+        setStatus("")
       }
       else {
         const error = await res.json()

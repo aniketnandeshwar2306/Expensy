@@ -11,11 +11,21 @@ function Auth() {
 
   const navigate = useNavigate()
 
+  const resetForm = () => {
+    setUsername('')
+    setEmail('')
+    setPassword('')
+  }
+
   const handleSignUp = () => {
-    setIsSignUp(true);
+    resetForm()
+    setStatusMessage('')
+    setIsSignUp(true)
   }
   const handleSignIn = () => {
-    setIsSignUp(false);
+    resetForm()
+    setStatusMessage('')
+    setIsSignUp(false)
   }
 
 
@@ -46,8 +56,9 @@ function Auth() {
       const data = await res.json()
 
       if (res.ok) {
-        // navigate to sign in
-        handleSignIn()
+        // clear inputs and navigate to sign in
+        resetForm()
+        setIsSignUp(false)
         setStatusMessage('Registration successful! Please sign in.')
       }
       else {

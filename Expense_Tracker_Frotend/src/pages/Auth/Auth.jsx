@@ -37,11 +37,11 @@ function Auth() {
       if (res.ok) {
         // navigate to sign in
         handleSignIn()
-        console.log(statusMessage)
+        setStatusMessage('Registration successful! Please sign in.')
       }
       else {
-        setStatusMessage(data.message)
-        console.log(statusMessage)
+        setStatusMessage(data.detail || data.message || 'Registration failed')
+        console.log(data)
       }
 
     } catch (error) {
@@ -78,8 +78,8 @@ function Auth() {
         
         }
       else {
-        setStatusMessage(data.detail)  // login failed incorrect data 
-        console.log(statusMessage)
+        setStatusMessage(data.detail || data.message || 'Login failed')
+        console.log(data)
       }
     }
     catch (error) {

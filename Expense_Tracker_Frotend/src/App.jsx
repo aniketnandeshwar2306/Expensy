@@ -17,7 +17,7 @@ function App() {
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/loans" element={<LoanDebt />} />
         {/* Redirect root to dashboard */}
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../config/api";
 
 function Auth() {
   const [username, setUsername] = useState('')
@@ -22,7 +23,7 @@ function Auth() {
     e.preventDefault()
     setStatusMessage('registeration processing')
     try {
-      const res = await fetch('http://127.0.0.1:8000/register',
+      const res = await fetch(`${API_URL}/register`,
         {
           method: 'POST',
           headers: {
@@ -55,7 +56,7 @@ function Auth() {
     setStatusMessage('logging in process')
 
     try {          // here we want to fetch url then what we need is to post the data so we need to convert to string then post it
-      const res = await fetch('http://127.0.0.1:8000/login',
+      const res = await fetch(`${API_URL}/login`,
         {
           method: 'POST',
           headers: {

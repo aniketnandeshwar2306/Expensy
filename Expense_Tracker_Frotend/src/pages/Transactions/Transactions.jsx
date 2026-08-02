@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from '../../config/api';
 
 function Transactions() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +20,7 @@ function Transactions() {
     if (e) e.preventDefault();
     const token = localStorage.getItem("token")
     try {
-      const res = await fetch("http://127.0.0.1:8000/transaction",
+      const res = await fetch(`${API_URL}/transaction`,
         {
           method: "POST",
           headers: {
@@ -55,7 +56,7 @@ function Transactions() {
   const deleteTransaction = async (id) => {
     const token = localStorage.getItem("token")
     try {
-      const res = await fetch(`http://127.0.0.1:8000/transaction/${id}`,
+      const res = await fetch(`${API_URL}/transaction/${id}`,
         {
           method : "DELETE",
           headers : {
@@ -78,7 +79,7 @@ function Transactions() {
     const getTransaction = async () => {
       const token = localStorage.getItem("token")
       try {
-        const res = await fetch("http://127.0.0.1:8000/transactions",
+        const res = await fetch(`${API_URL}/transactions`,
           {
             method: "GET",
             headers: {

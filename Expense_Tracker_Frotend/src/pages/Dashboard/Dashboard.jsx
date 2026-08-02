@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PieChartComponent from '../../components/charts/pieChart';
+import { API_URL } from '../../config/api';
 
 function Dashboard() {
 
@@ -28,7 +29,7 @@ function Dashboard() {
     e.preventDefault()
     const token = localStorage.getItem("token")
     try {
-      const res = await fetch("http://127.0.0.1:8000/transaction",
+      const res = await fetch(`${API_URL}/transaction`,
         {
           method: "POST",
           headers: {
@@ -59,7 +60,7 @@ function Dashboard() {
   const deleteTransaction = async (id) => {
     const token = localStorage.getItem("token")
     try {
-      const res = await fetch(`http://127.0.0.1:8000/transaction/${id}`,
+      const res = await fetch(`${API_URL}/transaction/${id}`,
         {
           method : "DELETE",
           headers : {
@@ -84,7 +85,7 @@ function Dashboard() {
   useEffect(() => {
     async function getprofile() {
       const token = localStorage.getItem("token")
-      const res = await fetch("http://127.0.0.1:8000/profile",
+      const res = await fetch(`${API_URL}/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -100,7 +101,7 @@ function Dashboard() {
     const getTransaction = async () => {
       const token = localStorage.getItem("token")
       try {
-        const res = await fetch("http://127.0.0.1:8000/transactions",
+        const res = await fetch(`${API_URL}/transactions`,
           {
             method: "GET",
             headers: {

@@ -21,7 +21,18 @@ function Auth() {
 
   const registerHandler = async (e) => {
     e.preventDefault()
-    setStatusMessage('registeration processing')
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatusMessage('Please enter a valid email address.')
+      return
+    }
+    if (password.length < 8) {
+      setStatusMessage('Password must be at least 8 characters long.')
+      return
+    }
+
+    setStatusMessage('Registration processing...')
     try {
       const res = await fetch(`${API_URL}/register`,
         {
@@ -40,7 +51,10 @@ function Auth() {
         setStatusMessage('Registration successful! Please sign in.')
       }
       else {
-        setStatusMessage(data.detail || data.message || 'Registration failed')
+        const errorText = Array.isArray(data.detail)
+          ? data.detail.map(err => err.msg).join(', ')
+          : (data.detail || data.message || 'Registration failed');
+        setStatusMessage(errorText)
         console.log(data)
       }
 
@@ -53,7 +67,18 @@ function Auth() {
 
   const loginHandler = async (e) => {
     e.preventDefault()
-    setStatusMessage('logging in process')
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatusMessage('Please enter a valid email address.')
+      return
+    }
+    if (password.length < 8) {
+      setStatusMessage('Password must be at least 8 characters long.')
+      return
+    }
+
+    setStatusMessage('Logging in process...')
 
     try {          // here we want to fetch url then what we need is to post the data so we need to convert to string then post it
       const res = await fetch(`${API_URL}/login`,
@@ -78,7 +103,10 @@ function Auth() {
         
         }
       else {
-        setStatusMessage(data.detail || data.message || 'Login failed')
+        const errorText = Array.isArray(data.detail)
+          ? data.detail.map(err => err.msg).join(', ')
+          : (data.detail || data.message || 'Login failed');
+        setStatusMessage(errorText)
         console.log(data)
       }
     }

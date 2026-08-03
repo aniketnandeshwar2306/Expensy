@@ -3,7 +3,7 @@ from bson import ObjectId
 import bcrypt
 from auth import create_access_token, get_user_access
 from database import user_collection
-from schemas import User
+from schemas import UserRegister, UserLogin
 
 router = APIRouter()
 
@@ -22,7 +22,7 @@ async def Profile(user_id: str = Depends(get_user_access)):
 
 
 @router.post('/register')
-async def Register(user: User):  # (var name : var type)
+async def Register(user: UserRegister):  # (var name : var type)
 
     existing_user = user_collection.find_one({"email": user.email})
     if (existing_user):
@@ -41,7 +41,7 @@ async def Register(user: User):  # (var name : var type)
 
 
 @router.post('/login')
-async def Login(user: User):
+async def Login(user: UserLogin):
     existing_user = user_collection.find_one({"email": user.email})
     if existing_user:
         if bcrypt.checkpw(user.password.encode("utf-8"), existing_user["password"].encode("utf-8")):  # (entered password in byte , db password in byte) checks if password matches

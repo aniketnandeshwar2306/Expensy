@@ -94,7 +94,7 @@ function Auth() {
           headers: {
             'Content-type': 'application/json',
           },
-          body: JSON.stringify({ username: username, email: email, password: password }),
+          body: JSON.stringify({ email: email, password: password }),
         }
       )  // fetch("url" , object{ method , header , body that is actual data })
 
